@@ -1,3 +1,5 @@
+import 'package:flt_expense/Screen/Auth/Login/LoginScreen.dart';
+import 'package:flt_expense/Screen/Auth/Login/loginBinding.dart';
 import 'package:flt_expense/Utils/colors.dart';
 import 'package:flt_expense/Utils/images.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 3), () {
+      Get.off(() => LoginScreen(), binding: LoginBinding());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

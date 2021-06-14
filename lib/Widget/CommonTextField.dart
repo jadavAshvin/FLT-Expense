@@ -45,13 +45,12 @@ class CommanTextField extends StatelessWidget {
   }
 }
 
-InputDecoration commonInputDecoration(labelName) {
+InputDecoration commonInputDecoration(icon) {
   return InputDecoration(
       focusedBorder: OutlineInputBorder(borderSide: BorderSide(width: 1, color: primaryColor), borderRadius: BorderRadius.all(Radius.circular(15.0))),
       disabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 1, color: grey), borderRadius: BorderRadius.all(Radius.circular(15.0))),
       border: OutlineInputBorder(borderSide: BorderSide(width: 1, color: primaryColor), borderRadius: BorderRadius.all(Radius.circular(15.0))),
-      labelText: "  $labelName",
-      labelStyle: TextStyle(color: black));
+      suffixIcon: Icon(icon));
 }
 
 TextStyle commanTextFieldStyle = TextStyle(fontFamily: 'Montserrat-Medium', fontSize: text18);

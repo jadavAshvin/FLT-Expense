@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 // Color primaryColor = Color(0xff6C5CE7);
-Color primaryColor = Color(0xff800080);
-Color buttonColor = Color(0xff6C5CE7);
+Color primaryColor = Colors.teal;
+Color buttonColor = Color(0xff243665);
 Color backGroundScaffoldColor = Color(0xffF5F5F5);
 Color primaryGreyColor = Color(0xFFF1F9FD);
 Color grey = Color(0xFFA5A5A5);
+Color homeCard = Color(0xFFEBEBEE);
 Color black = Colors.black;
 Color? greyLight = Colors.grey[300];
 Color textTitleColor = Color(0xff281856);

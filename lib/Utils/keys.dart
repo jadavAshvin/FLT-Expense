@@ -5,9 +5,8 @@ class Keys {
   static const String USERNAME = "USERNAME";
 
   static const String AUTH_TOKEN = "AUTH_TOKEN";
-  static const String CURRENT_LANG = "CURRENT_LANG";
-  static const String ENGLISH_LANG_MAP = "ENGLISH_LANG_MAP";
-  static const String ICELANDIC_LANG_MAP = "ICELANDIC_LANG_MAP";
+  static const String QUICK_LOGIN = "QUICK_LOGIN";
+
   static const String PROFILE_IMAGE = "PROFILE_IMAGE";
 
   static const String ROLE = "ROLE";

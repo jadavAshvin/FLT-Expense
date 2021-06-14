@@ -10,23 +10,27 @@ String add = "Add";
 String addItem = "addItem";
 String editItem = "editItem";
 String edit = "edit";
-String txtExpense = "Expense";
 
 //No Internet
 
 //Login
-String email = "lb_email_enter";
-String txtpassword = "lb_password";
-String txtforgotPassword = "forgotPassword";
-String agreeWith = "agreeWith";
+String email = "Email";
+String txtpassword = "Password";
+String txtAutoSign = "Auto Sign In";
+String txtCantLogin = "Can't Login?";
+String txtHelp = "Help";
+String txtforgotPassword = "Forgot Password?";
+String txtSignIn = "Sign In";
 String employeeLogin = "employeeLogin";
 String clickHere = "clickHere";
 String termsCondition = "temrsAndCondition";
 String and = "and";
 String privacyPolicy = "privacyPolicy";
 String login = "lb_login";
-String txtTimaskraningar = "Timaskraningar";
-String txtLoginCap = "Skraou pig inn";
+String fasterlogin1 = "Next time, would you like to log in faster with Touch ID?";
+String fasterlogin2 = "Log in with your fingerprint. Fast, easy and secure. You can always change this from Settings.";
+String txtNotNow = "Not Now";
+String txtSet = "Set";
 
 /*===================== Reset Screens  ================*/
 String txtResetPass = "ResetPass";
@@ -45,6 +49,12 @@ String txtSuccessfully = "Successfully";
 
 /*===================== HomeScreen  ================*/
 String txtLogout = "Logout";
+String txtExpenses = "Expenses";
+String txtReports = "Reports";
+String txtMileage = "Mileage";
+String txtApprovals = "Approvals";
+String txtCamera = "Camera";
+String txtSettings = "Settings";
 
 /*====================== Profile Module ==================*/
 String txtUpdateProfile = "UpdateProfile";
@@ -55,7 +65,6 @@ String txtChangePassword = "ChangePassword";
 String txtLanguage = "lb_language";
 String txtGallery = "Gallery";
 String txtCropper = "Cropper";
-String txtCamera = "Camera";
 String txtSelectOption = "SelectOption";
 String txtUpdateImage = "UpdateImage";
 

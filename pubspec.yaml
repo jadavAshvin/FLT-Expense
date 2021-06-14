@@ -13,12 +13,12 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  velocity_x: ^3.2.0
   flutter_svg: ^0.22.0
+  get: ^4.1.4
+  velocity_x: ^3.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  get: ^4.1.4
   shared_preferences: ^2.0.6
 
 flutter:
@@ -28,3 +28,17 @@ flutter:
     - assets/Icons/
     - assets/Images/
     - assets/fonts/
+    - assets/ScreenShots/
+
+  fonts:
+    - family: Poppins-Regular
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+
+    - family: Poppins-Medium
+      fonts:
+        - asset: assets/fonts/Poppins-Medium.ttf
+
+    - family: Poppins-Bold
+      fonts:
+        - asset: assets/fonts/Poppins-Bold.ttf

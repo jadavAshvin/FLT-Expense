@@ -1,3 +1,3 @@
-const String FAMILY_REGULAR = "Montserrat-Regular";
-const String FAMILY_MEDIUM = "Montserrat-Medium";
-const String FAMILY_BOLD = "Montserrat-Bold";
+const String FAMILY_REGULAR = "Poppins-Regular";
+const String FAMILY_MEDIUM = "Poppins-Medium";
+const String FAMILY_BOLD = "Poppins-Bold";
