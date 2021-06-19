@@ -115,14 +115,14 @@ class CustomButtonBorder extends StatelessWidget {
   final double left;
   final double right;
   final Function() onTap;
-  final String title;
+  final Widget? child;
 
-  CustomButtonBorder(
-    this.title,
-    this.left,
-    this.right,
-    this.onTap,
-  );
+  CustomButtonBorder({
+    required this.child,
+    required this.left,
+    required this.right,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -131,16 +131,51 @@ class CustomButtonBorder extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
+          height: 60,
           padding: EdgeInsets.symmetric(vertical: 20),
           decoration: new BoxDecoration(
             color: white,
             border: Border.all(color: primaryColor),
             shape: BoxShape.rectangle,
             //  border: Border.all(color: Theme.of(context).primaryColor),
-            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
           ),
           child: Center(
-            child: title_normalBlack(title: title, fontSize: 20),
+            child: child,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomButtonDisabled extends StatelessWidget {
+  final double left;
+  final double right;
+  final String title;
+
+  CustomButtonDisabled(
+    this.title,
+    this.left,
+    this.right,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: left, right: right),
+      child: InkWell(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 20),
+          decoration: new BoxDecoration(
+            color: white,
+            border: Border.all(color: grey),
+            shape: BoxShape.rectangle,
+            //  border: Border.all(color: Theme.of(context).primaryColor),
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          ),
+          child: Center(
+            child: title_normalGrey(title: title, fontSize: 20),
           ),
         ),
       ),

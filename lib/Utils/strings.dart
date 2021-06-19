@@ -55,6 +55,22 @@ String txtMileage = "Mileage";
 String txtApprovals = "Approvals";
 String txtCamera = "Camera";
 String txtSettings = "Settings";
+/*===================== Expense  ================*/
+String txtNewExpenses = "New Expenses";
+String txtexpType = "Expense Type";
+String txtexpName = "Expense Name";
+String txtPurpose = "Purpose";
+String txtAmount = "Amount";
+String txtCompPaid = "Company Paid";
+String txtLocation = "Location";
+String txtSplitWith = "Split With";
+String txtProjectAllocation = "Project Allocation";
+String txtProject = "Project";
+String txtAddReceipt = "Add Receipt";
+String txtExactSum = "Exact Sum";
+String txtSplitBy = "Split by %";
+String txtCancel = "Cancel";
+String txtSave = "Save";
 
 /*====================== Profile Module ==================*/
 String txtUpdateProfile = "UpdateProfile";

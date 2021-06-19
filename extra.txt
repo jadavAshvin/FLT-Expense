@@ -1,0 +1,71 @@
+
+
+Padding(
+        padding: const EdgeInsets.only(top: 35.0, left: 10),
+        child: Stack(
+          children: <Widget>[
+            Transform.translate(
+              offset: Offset.fromDirection(getRadiansFromDegree(330), degOneTranslationAnimation.value * 100),
+              child: Transform(
+                transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
+                alignment: Alignment.center,
+                child: CircularButton(
+                  label: "Add Mileage",
+                  width: 50,
+                  height: 50,
+                  icon: SVG.MILEAGE_ICON,
+                  onClick: () {},
+                ),
+              ),
+            ),
+            Transform.translate(
+              offset: Offset.fromDirection(getRadiansFromDegree(270), degOneTranslationAnimation.value * 100),
+              child: Transform(
+                transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
+                alignment: Alignment.center,
+                child: CircularButton(
+                  label: "Add Report",
+                  width: 50,
+                  height: 50,
+                  icon: SVG.REPORT_ICON,
+                  onClick: () {},
+                ),
+              ),
+            ),
+            Transform.translate(
+              offset: Offset.fromDirection(getRadiansFromDegree(210), degOneTranslationAnimation.value * 100),
+              child: Transform(
+                transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
+                alignment: Alignment.center,
+                child: CircularButton(
+                  label: "Add Expense",
+                  width: 50,
+                  height: 50,
+                  icon: SVG.EXPENSE_ICON,
+                  onClick: () {
+                    Get.to(AddExpenseScreen(), binding: AddExpenseBinding());
+                  },
+                ),
+              ),
+            ),
+            Transform(
+              transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value)),
+              alignment: Alignment.center,
+              child: FloatingActionButton(
+                backgroundColor: buttonColor,
+                child: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  if (animationController.isCompleted) {
+                    animationController.reverse();
+                  } else {
+                    animationController.forward();
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
+      ),

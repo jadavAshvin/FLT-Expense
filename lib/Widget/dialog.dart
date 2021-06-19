@@ -1,3 +1,5 @@
+import 'package:flt_expense/Screen/Auth/Login/LoginScreen.dart';
+import 'package:flt_expense/Screen/Auth/Login/loginBinding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -19,7 +21,7 @@ logoutDialog() {
             await setPrefValue(Keys.USERNAME, "");
             await setPrefValue(Keys.PROFILE_IMAGE, "");
             await setPrefValue(Keys.USERID, "");
-            Get.back();
+            Get.offAll(LoginScreen(), binding: LoginBinding());
           },
         ),
         TextButton(

@@ -1,3 +1,4 @@
+import 'package:flt_expense/Utils/texts/font_family.dart';
 import 'package:flutter/material.dart';
 import 'package:flt_expense/Utils/texts/textSize.dart';
 import '../colors.dart';
@@ -7,9 +8,10 @@ class BaseAppBar extends StatelessWidget with PreferredSizeWidget {
   final String? title;
   final String? toolTip;
   final bool? lead;
+  final bool? centerTitle;
   final IconData? trail;
   final onTap;
-  BaseAppBar({this.title, this.lead, this.trail, this.onTap, this.toolTip});
+  BaseAppBar({this.title, this.lead, this.trail, this.onTap, this.toolTip, this.centerTitle});
 
   static const double _topBarHeight = 60;
 
@@ -17,8 +19,8 @@ class BaseAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: primaryColor,
-      title: title!.text.fontFamily("Times New Roman").minFontSize(text22).extraBold.make(),
-      centerTitle: true,
+      title: title!.text.fontFamily(FAMILY_REGULAR).wide.minFontSize(text22).extraBold.make(),
+      centerTitle: centerTitle == null ? true : centerTitle,
       // leading: IconButton(
       //   icon: Icon(Icons.arrow_back_sharp, size: 30, color: white),
       //   onPressed: () => Get.back(),

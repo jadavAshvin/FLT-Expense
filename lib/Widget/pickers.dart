@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 
 DateFormat dateFormat = DateFormat("yyyy-MM-dd");
 DateFormat dateFormatshow = DateFormat("dd/MM/yyyy");
-DateFormat dateFormatAlphabet = DateFormat.yMMMMd();
+DateFormat dateFormatAlphabet = DateFormat("dd MMMM yyyy");
 
 Future<DateTime> selectDate(BuildContext context, {DateTime? initialDate, required DateTime currentDate, DateTime? lastDate}) async {
   if (initialDate != null) {

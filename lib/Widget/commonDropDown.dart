@@ -1,41 +1,60 @@
+import 'package:flt_expense/Widget/CommonTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:flt_expense/Utils/colors.dart';
-import 'package:flt_expense/Widget/CommonTextField.dart';
-import 'package:flt_expense/Widget/customCard.dart';
 
 class CommanDropDown extends StatelessWidget {
-  final List<DropdownMenuItem> items;
-  final Function(dynamic)? onChanged;
-  final hint;
-  final Widget? hintWidget;
-  final selectedValue;
-  const CommanDropDown({Key? key, required this.items, required this.onChanged, required this.hint, this.hintWidget, this.selectedValue})
-      : super(key: key);
+  final Widget? child;
+
+  const CommanDropDown({Key? key, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return CustomCard(
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: DropdownButton(
-          isExpanded: true,
-          iconSize: 27.0,
-          iconEnabledColor: black,
-          // value: selectedValue,
-          underline: SizedBox(),
-          style: Theme.of(context).textTheme.subtitle2!.copyWith(color: black),
-          hint: Padding(
-            padding: const EdgeInsets.only(left: 5.0),
-            child: hintWidget == null
-                ? Text(
-                    hint,
-                    style: commanTextFieldStyle,
-                  )
-                : hintWidget,
-          ),
-          onChanged: onChanged,
-          icon: Icon(Icons.keyboard_arrow_down),
-          items: items,
+    return Container(
+      height: 60.0,
+      padding: EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        border: Border.all(width: 1, color: grey),
+        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+      ),
+      child: child,
+    );
+  }
+}
+
+class CustomTabWithIcon extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final onTap;
+  final bool color;
+
+  CustomTabWithIcon({Key? key, required this.icon, required this.title, this.onTap, this.color = false}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 60.0,
+      padding: EdgeInsets.symmetric(horizontal: 7, vertical: 5),
+      decoration: BoxDecoration(
+        border: Border.all(width: 1, color: grey),
+        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+      ),
+      child: InkWell(
+        onTap: onTap,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left: 5),
+              child: Text(
+                "$title",
+                style: commanTextFieldStyle,
+              ),
+            ),
+            Icon(
+              icon,
+              color: primaryColor,
+            )
+          ],
         ),
       ),
     );

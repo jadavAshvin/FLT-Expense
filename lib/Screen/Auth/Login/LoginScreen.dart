@@ -1,6 +1,6 @@
 import 'package:flt_expense/Screen/Auth/Login/loginController.dart';
-import 'package:flt_expense/Screen/HomeScreen/HomeBinding.dart';
-import 'package:flt_expense/Screen/HomeScreen/HomeScreen.dart';
+import 'package:flt_expense/Screen/Home/HomeScreen/HomeBinding.dart';
+import 'package:flt_expense/Screen/Home/HomeScreen/HomeScreen.dart';
 import 'package:flt_expense/Utils/colors.dart';
 import 'package:flt_expense/Utils/images.dart';
 import 'package:flt_expense/Utils/strings.dart';
@@ -61,7 +61,7 @@ class LoginScreen extends GetView<LoginController> {
                             txtpassword.text.normal.medium.make(),
                             5.heightBox,
                             TextFormField(
-                              controller: controller.emailController,
+                              controller: controller.passController,
                               decoration: commonInputDecoration(Icons.lock_outline_rounded),
                             ),
                             20.heightBox,
@@ -75,8 +75,8 @@ class LoginScreen extends GetView<LoginController> {
                                       child: Container(
                                         decoration: BoxDecoration(
                                             border: Border.all(
-                                              color: (controller.checkBox.value) ? Colors.black : Colors.black,
-                                              width: 1,
+                                              color: primaryColor,
+                                              width: 2,
                                             ),
                                             borderRadius: BorderRadius.all(
                                               Radius.circular(5),
@@ -91,6 +91,9 @@ class LoginScreen extends GetView<LoginController> {
                                                 activeColor: primaryColor,
                                                 checkColor: white,
                                                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(5),
+                                                ),
                                                 visualDensity: VisualDensity.standard,
                                                 value: controller.checkBox.value,
                                                 tristate: false,

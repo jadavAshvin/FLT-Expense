@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Color primaryColor = Color(0xff6C5CE7);
-Color primaryColor = Colors.teal;
+Color primaryColor = Color(0xff31B5A6);
 Color buttonColor = Color(0xff243665);
 Color backGroundScaffoldColor = Color(0xffF5F5F5);
 Color primaryGreyColor = Color(0xFFF1F9FD);

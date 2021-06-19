@@ -16,6 +16,10 @@ class Images {
 
 class SVG {
   static const String LOGO_WHITE = "assets/Images/logo-white.svg";
+  static const String EXPENSE_ICON = "assets/Icons/expense_icon.svg";
+  static const String MILEAGE_ICON = "assets/Icons/mileage_icon.svg";
+  static const String PROFILE_ICON = "assets/Icons/profile_icon.svg";
+  static const String REPORT_ICON = "assets/Icons/report_icon.svg";
 }
 
 class PPI {

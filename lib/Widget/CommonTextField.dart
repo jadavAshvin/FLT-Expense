@@ -1,7 +1,9 @@
+import 'package:flt_expense/Utils/texts/font_family.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flt_expense/Utils/colors.dart';
 import 'package:flt_expense/Utils/texts/textSize.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class CommanTextField extends StatelessWidget {
   // final CommanTextFController addFormController = Get.put(CommanTextFController());
@@ -53,25 +55,24 @@ InputDecoration commonInputDecoration(icon) {
       suffixIcon: Icon(icon));
 }
 
-TextStyle commanTextFieldStyle = TextStyle(fontFamily: 'Montserrat-Medium', fontSize: text18);
-InputDecoration commonInputDecoration2(labelName) {
+InputDecoration commonInputDecorationText(text) {
   return InputDecoration(
-      border: InputBorder.none,
-      contentPadding: EdgeInsets.all(10),
-      isDense: true,
-      labelText: labelName,
-      labelStyle: TextStyle(color: grey, fontSize: text18, fontFamily: 'Montserrat-Medium'));
+    focusedBorder: OutlineInputBorder(borderSide: BorderSide(width: 1, color: primaryColor), borderRadius: BorderRadius.all(Radius.circular(15.0))),
+    disabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 1, color: grey), borderRadius: BorderRadius.all(Radius.circular(15.0))),
+    border: OutlineInputBorder(borderSide: BorderSide(width: 1, color: primaryColor), borderRadius: BorderRadius.all(Radius.circular(15.0))),
+    suffix: "$text".text.base.bold.color(primaryColor).fontFamily(FAMILY_MEDIUM).make(),
+  );
 }
 
-InputDecoration commonInputDecoration3(labelName) {
+InputDecoration commonInputDecoration2(label) {
   return InputDecoration(
-      border: InputBorder.none,
-      contentPadding: EdgeInsets.all(10),
-      alignLabelWithHint: true,
-      isDense: true,
-      labelText: labelName,
-      labelStyle: TextStyle(color: grey, fontSize: text18, fontFamily: 'Montserrat-Medium'));
+      focusedBorder: OutlineInputBorder(borderSide: BorderSide(width: 1, color: primaryColor), borderRadius: BorderRadius.all(Radius.circular(15.0))),
+      disabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 1, color: grey), borderRadius: BorderRadius.all(Radius.circular(15.0))),
+      border: OutlineInputBorder(borderSide: BorderSide(width: 1, color: primaryColor), borderRadius: BorderRadius.all(Radius.circular(15.0))),
+      hintText: label);
 }
+
+TextStyle commanTextFieldStyle = TextStyle(fontFamily: FAMILY_MEDIUM, fontSize: text18);
 
 class UpperCaseTextFormatter extends TextInputFormatter {
   @override
