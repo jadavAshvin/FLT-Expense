@@ -34,6 +34,7 @@ class ProjectAllocationDailog extends GetView<AddExpenseController> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            20.heightBox,
             Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[

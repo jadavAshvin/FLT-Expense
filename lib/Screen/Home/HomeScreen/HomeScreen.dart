@@ -70,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: <Widget>[
                         GridView(
                           shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             crossAxisSpacing: 30.0,
@@ -81,11 +82,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Get.offAll(HomeTabScreen());
                                 // Get.to(AddExpenseScreen(), binding: AddExpenseBinding());
                               },
-                              child: cardWidget(Images.EXPENSE_HOME, "14", txtExpenses, 70.0),
+                              child: cardWidget(SVG.EXPENSE_ICON, "14", txtExpenses, 70.0),
                             ),
-                            cardWidget(Images.REPORTS_HOME, "8", txtReports, 70.0),
-                            cardWidget(Images.MILEAGE_HOME, "11", txtMileage, 50.0),
-                            cardWidget(Images.REPORTS, "11", txtApprovals, 50.0),
+                            cardWidget(SVG.REPORT_ICON, "8", txtReports, 70.0),
+                            cardWidget(SVG.MILEAGE_ICON, "11", txtMileage, 50.0),
+                            cardWidget(SVG.APPROVAL_ICON, "11", txtApprovals, 50.0),
                             Container(
                               padding: EdgeInsets.all(20),
                               height: 30,
@@ -97,10 +98,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Image.asset(
-                                      Images.CAMERA_HOME,
+                                    child: SvgPicture.asset(
+                                      SVG.CAMERA_ICON,
                                       fit: BoxFit.fill,
                                       height: 60,
+                                      color: primaryColor,
                                     ),
                                   ),
                                   25.heightBox,
@@ -119,10 +121,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.all(5.0),
-                                    child: Image.asset(
-                                      Images.SETTINGS_HOME,
+                                    child: SvgPicture.asset(
+                                      SVG.SETTING_ICON,
                                       fit: BoxFit.fill,
                                       height: 70,
+                                      color: primaryColor,
                                     ),
                                   ),
                                   15.heightBox,
@@ -134,7 +137,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         20.heightBox,
                         CustomButton(txtLogout, 0, 0, () {
-                          logoutDialog();
+                          // logoutDialog();
+                          getQuickLoginDailog(context);
                         })
                       ],
                     ),
@@ -165,10 +169,11 @@ class _HomeScreenState extends State<HomeScreen> {
             children: <Widget>[
               Container(
                   transform: Matrix4.translationValues(0, 15, 0), child: "$count".text.bold.color(primaryColor).xl5.fontFamily(FAMILY_BOLD).make()),
-              Image.asset(
+              SvgPicture.asset(
                 image,
                 fit: BoxFit.fill,
                 height: height,
+                color: primaryColor,
               )
             ],
           ),
@@ -181,49 +186,62 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 getQuickLoginDailog(context) {
-  Get.defaultDialog(
-    title: "",
-    titleStyle: TextStyle(fontSize: 4),
-    cancel: Container(),
-    confirm: Container(),
-    content: Container(
-      width: Get.width / 0.75,
-      child: Column(
-        children: <Widget>[
-          fasterlogin1.richText.semiBold.center.fontFamily(FAMILY_MEDIUM).lg.make(),
-          15.heightBox,
-          fasterlogin2.richText.center.medium.make(),
-          20.heightBox,
-          Divider(),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Expanded(
-                flex: 2,
-                child: TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: txtNotNow.text.lg.color(buttonColor).makeCentered(),
+  Get.dialog(
+    Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(color: Colors.black, offset: Offset(0, 10), blurRadius: 10),
+          ],
+        ),
+        width: Get.width / 1.1,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            fasterlogin1.richText.semiBold.center.fontFamily(FAMILY_BOLD).lg.make(),
+            15.heightBox,
+            fasterlogin2.richText.center.medium.make(),
+            30.heightBox,
+            Divider(),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: txtNotNow.text.lg.color(buttonColor).makeCentered(),
+                  ),
                 ),
-              ),
-              Container(
-                width: 5,
-                color: grey,
-              ),
-              Expanded(
-                flex: 2,
-                child: TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: txtSet.text.lg.color(buttonColor).makeCentered(),
+                Container(
+                  width: 5,
+                  color: grey,
                 ),
-              ),
-            ],
-          )
-        ],
-      ).paddingZero,
-    ).hOneForth(context),
+                Expanded(
+                  flex: 2,
+                  child: TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: txtSet.text.lg.color(buttonColor).makeCentered(),
+                  ),
+                ),
+              ],
+            )
+          ],
+        ).paddingZero,
+      ),
+    ),
   );
 }

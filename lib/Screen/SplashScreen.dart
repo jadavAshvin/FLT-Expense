@@ -1,3 +1,4 @@
+import 'package:flt_expense/Screen/Auth/FingerPrint/fingerPrintScreen.dart';
 import 'package:flt_expense/Screen/Auth/Login/LoginScreen.dart';
 import 'package:flt_expense/Screen/Auth/Login/loginBinding.dart';
 import 'package:flt_expense/Utils/colors.dart';
@@ -18,7 +19,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
-      Get.off(() => LoginScreen(), binding: LoginBinding());
+      // Get.off(() => LoginScreen(), binding: LoginBinding());
+      Get.off(() => FingerPrintScreen());
     });
   }
 

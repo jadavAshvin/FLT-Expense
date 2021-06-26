@@ -9,6 +9,7 @@ class Images {
   static const String REPORTS_HOME = "assets/Images/reports_home.png";
   static const String REPORTS = "assets/Images/reports.png";
   static const String SETTINGS_HOME = "assets/Images/settings_home.png";
+  static const String EXPENSE_LOGO_COLOR = "assets/Images/logo-color.png";
 
   //json
   static const String no_internet_connection = "assets/images/no_internet_connection.json";
@@ -20,6 +21,12 @@ class SVG {
   static const String MILEAGE_ICON = "assets/Icons/mileage_icon.svg";
   static const String PROFILE_ICON = "assets/Icons/profile_icon.svg";
   static const String REPORT_ICON = "assets/Icons/report_icon.svg";
+  static const String APPROVAL_ICON = "assets/Icons/home_approvals.svg";
+  static const String CAMERA_ICON = "assets/Icons/home_camera.svg";
+  static const String SETTING_ICON = "assets/Icons/home_settings.svg";
+  static const String EXPENSE_FINGERPRINT = "assets/Icons/expense_fingerprint.svg";
+  static const String EXPENSE_LOGO_COLOR = "assets/Icons/logo-color.svg";
+  static const String EXPENSE_FINGER_LOGO = "assets/Icons/expense_finger_logo.svg";
 }
 
 class PPI {

@@ -19,7 +19,11 @@ String txtpassword = "Password";
 String txtAutoSign = "Auto Sign In";
 String txtCantLogin = "Can't Login?";
 String txtHelp = "Help";
+String txtHello = "Hello";
+String txtLoginPass = "Login Using Password";
+String txtUserTouchID = "Use touch ID to faster and easy access to your account.";
 String txtforgotPassword = "Forgot Password?";
+String txtforgotPasswordTitle = "Forgot Password";
 String txtSignIn = "Sign In";
 String employeeLogin = "employeeLogin";
 String clickHere = "clickHere";
@@ -71,6 +75,8 @@ String txtExactSum = "Exact Sum";
 String txtSplitBy = "Split by %";
 String txtCancel = "Cancel";
 String txtSave = "Save";
+String txtSubmit = "Submit";
+String txtforgotPassTagLine = "Enter the email associated with your account and we'll send an email with instructions to reset your password.";
 
 /*====================== Profile Module ==================*/
 String txtUpdateProfile = "UpdateProfile";
