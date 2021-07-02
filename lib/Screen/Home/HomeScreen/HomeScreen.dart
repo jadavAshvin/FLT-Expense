@@ -7,7 +7,6 @@ import 'package:flt_expense/Utils/strings.dart';
 import 'package:flt_expense/Utils/texts/font_family.dart';
 import 'package:flt_expense/Widget/CustomButton.dart';
 import 'package:flt_expense/Widget/backgroundWidget.dart';
-import 'package:flt_expense/Widget/dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';

@@ -73,61 +73,132 @@ class _HomeTabScreenState extends State<HomeTabScreen> with SingleTickerProvider
       //     elevation: 4.0,
       //   ),
       // ),
-      floatingActionButton: SpeedDialMenuButton(
-        //if needed to close the menu after clicking sub-FAB
-        isShowSpeedDial: _isShowDial,
-        //manually open or close menu
-        updateSpeedDialStatus: (isShow) {
-          //return any open or close change within the widget
-          this._isShowDial = isShow;
-        },
-        isEnableAnimation: true,
-        mainFABPosX: Get.width / 2.4,
-        //general init
-        isMainFABMini: false,
-        mainMenuFloatingActionButton: MainMenuFloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: () {},
-            backgroundColor: buttonColor,
-            closeMenuChild: Icon(Icons.close),
-            closeMenuForegroundColor: Colors.white,
-            closeMenuBackgroundColor: buttonColor),
-        floatingActionButtonWidgetChildren: <FloatingActionButton>[
-          FloatingActionButton(
-            child: SvgPicture.asset(
-              SVG.EXPENSE_ICON,
-              color: primaryColor,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(top: 35.0, left: 10),
+        child: Stack(
+          children: <Widget>[
+            Transform.translate(
+              offset: Offset.fromDirection(getRadiansFromDegree(330), degOneTranslationAnimation.value * 100),
+              child: Transform(
+                transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
+                alignment: Alignment.center,
+                child: CircularButton(
+                  label: "Add Mileage",
+                  width: 50,
+                  height: 50,
+                  icon: SVG.MILEAGE_ICON,
+                  onClick: () {},
+                ),
+              ),
             ),
-            onPressed: () {
-              Get.to(AddExpenseScreen(), binding: AddExpenseBinding());
-            },
-            backgroundColor: white,
-          ),
-          FloatingActionButton(
-            child: SvgPicture.asset(
-              SVG.REPORT_ICON,
-              color: primaryColor,
+            Transform.translate(
+              offset: Offset.fromDirection(getRadiansFromDegree(270), degOneTranslationAnimation.value * 100),
+              child: Transform(
+                transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
+                alignment: Alignment.center,
+                child: CircularButton(
+                  label: "Add Report",
+                  width: 50,
+                  height: 50,
+                  icon: SVG.REPORT_ICON,
+                  onClick: () {},
+                ),
+              ),
             ),
-            onPressed: () {
-              //if need to toggle menu after click
-            },
-            backgroundColor: white,
-          ),
-          FloatingActionButton(
-            child: SvgPicture.asset(
-              SVG.MILEAGE_ICON,
-              color: primaryColor,
+            Transform.translate(
+              offset: Offset.fromDirection(getRadiansFromDegree(210), degOneTranslationAnimation.value * 100),
+              child: Transform(
+                transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
+                alignment: Alignment.center,
+                child: CircularButton(
+                  label: "Add Expense",
+                  width: 50,
+                  height: 50,
+                  icon: SVG.EXPENSE_ICON,
+                  onClick: () {
+                    Get.to(AddExpenseScreen(), binding: AddExpenseBinding());
+                  },
+                ),
+              ),
             ),
-            onPressed: () {
-              //if no need to change the menu status
-            },
-            backgroundColor: white,
-          ),
-        ],
-        isSpeedDialFABsMini: false,
-
-        paddingBtwSpeedDialButton: 50.0,
+            Transform(
+              transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value)),
+              alignment: Alignment.center,
+              child: FloatingActionButton(
+                backgroundColor: buttonColor,
+                child: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  if (animationController.isCompleted) {
+                    animationController.reverse();
+                  } else {
+                    animationController.forward();
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
       ),
+      // floatingActionButton: SpeedDialMenuButton(
+      //   //if needed to close the menu after clicking sub-FAB
+      //   isShowSpeedDial: _isShowDial,
+      //   //manually open or close menu
+      //   updateSpeedDialStatus: (isShow) {
+      //     //return any open or close change within the widget
+      //     this._isShowDial = isShow;
+      //   },
+      //   isEnableAnimation: true,
+
+      //   mainFABPosX: Get.width / 2.4,
+      //   //general init
+      //   isMainFABMini: false,
+
+      //   mainMenuFloatingActionButton: MainMenuFloatingActionButton(
+      //       child: Icon(Icons.add),
+      //       onPressed: () {},
+      //       backgroundColor: buttonColor,
+      //       closeMenuChild: Icon(Icons.close),
+      //       closeMenuForegroundColor: Colors.white,
+      //       closeMenuBackgroundColor: buttonColor),
+      //   floatingActionButtonWidgetChildren: <FloatingActionButton>[
+      //     FloatingActionButton(
+      //       child: SvgPicture.asset(
+      //         SVG.EXPENSE_ICON,
+      //         color: primaryColor,
+      //       ),
+      //       onPressed: () {
+      //         Get.to(AddExpenseScreen(), binding: AddExpenseBinding());
+      //       },
+      //       backgroundColor: white,
+      //     ),
+      //     FloatingActionButton(
+      //       child: SvgPicture.asset(
+      //         SVG.REPORT_ICON,
+      //         color: primaryColor,
+      //       ),
+      //       onPressed: () {
+      //         //if need to toggle menu after click
+      //       },
+      //       backgroundColor: white,
+      //     ),
+      //     FloatingActionButton(
+      //       child: SvgPicture.asset(
+      //         SVG.MILEAGE_ICON,
+      //         color: primaryColor,
+      //       ),
+      //       onPressed: () {
+      //         //if no need to change the menu status
+      //       },
+      //       backgroundColor: white,
+      //     ),
+      //   ],
+      //   isSpeedDialFABsMini: false,
+
+      //   paddingBtwSpeedDialButton: 50.0,
+      // ),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
           padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -235,9 +306,10 @@ class CircularButton extends StatelessWidget {
   final double? width;
   final double? height;
   final String? icon;
+  final String? label;
   final Function()? onClick;
 
-  CircularButton({this.width, this.height, this.icon, this.onClick});
+  CircularButton({this.width, this.height, this.icon, this.onClick, this.label});
 
   @override
   Widget build(BuildContext context) {
