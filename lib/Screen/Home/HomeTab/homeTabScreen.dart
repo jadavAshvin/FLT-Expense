@@ -6,8 +6,6 @@ import 'package:flt_expense/Utils/CommonAppBar/commonAppbar.dart';
 import 'package:flt_expense/Utils/colors.dart';
 import 'package:flt_expense/Utils/images.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_arc_speed_dial/flutter_speed_dial_menu_button.dart';
-import 'package:flutter_arc_speed_dial/main_menu_floating_action_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -78,46 +76,51 @@ class _HomeTabScreenState extends State<HomeTabScreen> with SingleTickerProvider
         child: Stack(
           children: <Widget>[
             Transform.translate(
-              offset: Offset.fromDirection(getRadiansFromDegree(330), degOneTranslationAnimation.value * 100),
+              offset: Offset.fromDirection(getRadiansFromDegree(330), degOneTranslationAnimation.value * 120),
               child: Transform(
                 transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
                 alignment: Alignment.center,
-                child: CircularButton(
-                  label: "Add Mileage",
-                  width: 50,
-                  height: 50,
-                  icon: SVG.MILEAGE_ICON,
-                  onClick: () {},
+                child: InkWell(
+                  onTap: () {},
+                  child: CircularButton(
+                    label: "Add\n Mileage",
+                    width: 50,
+                    height: 50,
+                    icon: SVG.MILEAGE_ICON,
+                  ),
                 ),
               ),
             ),
             Transform.translate(
-              offset: Offset.fromDirection(getRadiansFromDegree(270), degOneTranslationAnimation.value * 100),
+              offset: Offset.fromDirection(getRadiansFromDegree(270), degOneTranslationAnimation.value * 120),
               child: Transform(
                 transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
                 alignment: Alignment.center,
-                child: CircularButton(
-                  label: "Add Report",
-                  width: 50,
-                  height: 50,
-                  icon: SVG.REPORT_ICON,
-                  onClick: () {},
+                child: InkWell(
+                  child: CircularButton(
+                    label: "Add\n Report",
+                    width: 50,
+                    height: 50,
+                    icon: SVG.REPORT_ICON,
+                  ),
                 ),
               ),
             ),
-            Transform.translate(
-              offset: Offset.fromDirection(getRadiansFromDegree(210), degOneTranslationAnimation.value * 100),
-              child: Transform(
-                transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
-                alignment: Alignment.center,
-                child: CircularButton(
-                  label: "Add Expense",
-                  width: 50,
-                  height: 50,
-                  icon: SVG.EXPENSE_ICON,
-                  onClick: () {
-                    Get.to(AddExpenseScreen(), binding: AddExpenseBinding());
-                  },
+            InkWell(
+              onTap: () {
+                Get.to(AddExpenseScreen(), binding: AddExpenseBinding());
+              },
+              child: Transform.translate(
+                offset: Offset.fromDirection(getRadiansFromDegree(210), degOneTranslationAnimation.value * 120),
+                child: Transform(
+                  transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
+                  alignment: Alignment.center,
+                  child: CircularButton(
+                    label: "Add\n Expense",
+                    width: 50,
+                    height: 50,
+                    icon: SVG.EXPENSE_ICON,
+                  ),
                 ),
               ),
             ),
@@ -307,21 +310,47 @@ class CircularButton extends StatelessWidget {
   final double? height;
   final String? icon;
   final String? label;
-  final Function()? onClick;
 
-  CircularButton({this.width, this.height, this.icon, this.onClick, this.label});
+  CircularButton({this.width, this.height, this.icon, this.label});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: grey, shape: BoxShape.circle),
-      width: width,
-      height: height,
-      child: SvgPicture.asset(
-        icon!,
-        color: primaryColor,
-        height: 10,
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: white,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey,
+                offset: Offset(0.0, 1.0), //(x,y)
+                blurRadius: 6.0,
+              ),
+            ],
+          ),
+          width: width,
+          height: height,
+          child: FloatingActionButton(
+            backgroundColor: white,
+            onPressed: () {
+              print("Floating Pressed");
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SvgPicture.asset(
+                icon!,
+                color: primaryColor,
+                // height: 10,
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+        ),
+        10.heightBox,
+        "$label".text.base.center.make()
+      ],
     );
   }
 }

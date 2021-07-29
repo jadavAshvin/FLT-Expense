@@ -138,7 +138,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         CustomButton(txtLogout, 0, 0, () {
                           // logoutDialog();
                           getQuickLoginDailog(context);
-                        })
+                        }),
+                        100.heightBox,
                       ],
                     ),
                   ),
