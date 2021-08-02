@@ -21,7 +21,9 @@ class FingerPrintScreen extends StatelessWidget {
           child: Column(
             children: <Widget>[
               100.heightBox,
-              Hero(tag: "Color_Logo", child: Image.asset(Images.EXPENSE_LOGO_COLOR)),
+              Hero(
+                  tag: "Color_Logo",
+                  child: Image.asset(Images.EXPENSE_LOGO_COLOR)),
               30.heightBox,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

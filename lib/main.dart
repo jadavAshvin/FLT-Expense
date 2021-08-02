@@ -4,6 +4,8 @@ import 'package:flt_expense/Utils/texts/font_family.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'Common/accessController.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -18,6 +20,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     Pref.init();
+    Get.lazyPut(()=>AccessController(),fenix: true);
+
     super.initState();
   }
 

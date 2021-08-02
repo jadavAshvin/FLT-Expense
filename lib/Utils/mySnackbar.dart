@@ -3,6 +3,17 @@ import 'package:get/get.dart';
 
 import 'colors.dart';
 
+mySnackBar(String message) {
+  return Get.rawSnackbar(
+      duration: Duration(seconds: 3),
+      snackPosition: SnackPosition.TOP,
+      backgroundColor: Colors.grey.shade400.withOpacity(0.95),
+      messageText: Text(message),
+      padding: EdgeInsets.all(20),
+      borderRadius: 10,
+      margin: EdgeInsets.all(10));
+}
+
 mySnackbar({required String title, required String description}) {
   return Get.snackbar(
     title,

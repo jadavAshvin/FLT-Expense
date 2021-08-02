@@ -3,6 +3,15 @@ String txtWhoops = "whoops";
 String txtCheckInternet = "checkInternet";
 String txtRetry = "retry";
 
+// Pref Value
+
+const String TOKEN = "TOKEN";
+const String PROFILE_IMAGE = "PROFILE_IMAGE";
+const String NAME = "NAME";
+const String ID = "ID";
+const String PHONE = "PHONE";
+const String EMAIL = "EMAIL";
+
 //App bar header
 String back = "back";
 String txtOk = "OK";
@@ -14,6 +23,10 @@ String edit = "edit";
 //No Internet
 
 //Login
+
+String errorValidEmail = "Enter valid email";
+String errorPassword = "Password required";
+
 String email = "Email";
 String txtpassword = "Password";
 String txtAutoSign = "Auto Sign In";

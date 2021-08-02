@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 class AuthApis {
   static HttpService httpService = HttpServe();
+
   static Future<Response?> loginApi(body) async {
     Response res = await httpService.postRequest(LOGIN_URL, body);
     if (res.statusCode == 200) {
