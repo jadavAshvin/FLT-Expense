@@ -1,3 +1,4 @@
+import 'package:flt_expense/Binding/initialTabBinding.dart';
 import 'package:flt_expense/Screen/Home/HomeTab/homeTabScreen.dart';
 import 'package:flt_expense/Utils/app_constants.dart';
 import 'package:flt_expense/Utils/colors.dart';
@@ -78,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             InkWell(
                               onTap: () {
-                                Get.offAll(HomeTabScreen());
+                                Get.offAll(HomeTabScreen(), binding: InitialTabBinding());
                                 // Get.to(AddExpenseScreen(), binding: AddExpenseBinding());
                               },
                               child: cardWidget(SVG.EXPENSE_ICON, "14", txtExpenses, 70.0),

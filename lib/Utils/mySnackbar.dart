@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import 'colors.dart';
@@ -14,27 +15,35 @@ mySnackBar(String message) {
       margin: EdgeInsets.all(10));
 }
 
-mySnackbar({required String title, required String description}) {
-  return Get.snackbar(
-    title,
-    description,
-    backgroundColor: grey,
-    snackPosition: SnackPosition.BOTTOM,
+mediumToastMessage({String? title, required String description}) {
+  Fluttertoast.showToast(
+    msg: description,
+    toastLength: Toast.LENGTH_SHORT,
+    backgroundColor: primaryColor,
+    textColor: white,
+  );
+}
+
+longToastMessage({String? title, required String description}) {
+  Fluttertoast.showToast(
+    msg: description,
+    toastLength: Toast.LENGTH_LONG,
+    backgroundColor: primaryColor,
+    textColor: white,
   );
 }
 
 mySnackbarColor({required String title, required String description, Color? color}) {
-  return Get.snackbar(title, description,
-      backgroundColor: color,
-      snackPosition: SnackPosition.BOTTOM,
-      duration: Duration(seconds: 2));
+  return Get.snackbar(title, description, backgroundColor: color, snackPosition: SnackPosition.BOTTOM, duration: Duration(seconds: 2));
 }
 
-Future<bool> snackBarBack({required String title, required String description}) async {
-  Get.snackbar(title, description,
-      backgroundColor: grey,
-      snackPosition: SnackPosition.BOTTOM,
-      duration: Duration(seconds: 2));
+Future<bool> toastBack({String? title, required String description}) async {
+  Fluttertoast.showToast(
+    msg: description,
+    toastLength: Toast.LENGTH_LONG,
+    backgroundColor: primaryColor,
+    textColor: white,
+  );
   bool res = await Future.delayed(Duration(seconds: 2)).then((value) => true);
   return res;
 }

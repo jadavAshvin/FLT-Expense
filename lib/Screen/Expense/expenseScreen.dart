@@ -1,9 +1,13 @@
+import 'package:flt_expense/Model/ExpenseModule/expenseListModel.dart';
+import 'package:flt_expense/Screen/Expense/ExpenseListController.dart';
 import 'package:flt_expense/Utils/colors.dart';
 import 'package:flt_expense/Utils/texts/font_family.dart';
+import 'package:flt_expense/Widget/progressInicator.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class ExpenseScreen extends StatelessWidget {
+class ExpenseScreen extends GetWidget<ExpenseListController> {
   const ExpenseScreen({Key? key}) : super(key: key);
 
   @override
@@ -13,12 +17,14 @@ class ExpenseScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              dateWidget("Today"),
-              itemList(2),
-              dateWidget("June 03,2021"),
-              itemList(5),
-              dateWidget("June 02,2021"),
-              itemList(2),
+              // dateWidget("Today"),
+              // itemList(2),
+              // dateWidget("June 03,2021"),
+              // itemList(5),
+              // dateWidget("June 02,2021"),
+              Obx(
+                () => controller.isLoading.value ? progressIndicator() : itemList(controller.expenseList),
+              )
             ],
           ),
         ),
@@ -33,13 +39,13 @@ class ExpenseScreen extends StatelessWidget {
     );
   }
 
-  Widget itemList(itemCount) {
+  Widget itemList(List<ExpenseListModel> expensList) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: itemCount,
+      itemCount: expensList.length,
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return listTab();
+        return listTab(expensList[index]);
       },
       // separatorBuilder: (BuildContext context, int index) {
       //   return Divider(
@@ -49,7 +55,7 @@ class ExpenseScreen extends StatelessWidget {
     );
   }
 
-  Widget listTab() {
+  Widget listTab(ExpenseListModel expense) {
     return Container(
       color: white,
       child: Padding(
@@ -61,16 +67,16 @@ class ExpenseScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                "Dinner".text.xl.wide.fontFamily(FAMILY_BOLD).bold.make(),
-                "Praesent autor".text.lg.color(grey).make(),
-                "Plain Field New Jersy".text.lg.color(grey).make(),
+                "${expense.expenseName}".text.xl.wide.fontFamily(FAMILY_BOLD).bold.make(),
+                "${expense.purpose}".text.lg.color(grey).make(),
+                "${expense.location}".text.lg.color(grey).make(),
               ],
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                "65".text.xl.bold.make(),
+                "${expense.amount}".text.xl.bold.make(),
                 "USD".text.lg.make(),
                 Icon(
                   Icons.check_circle_outline,

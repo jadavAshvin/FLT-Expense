@@ -1,6 +1,4 @@
 import 'package:flt_expense/Screen/Auth/Login/loginController.dart';
-import 'package:flt_expense/Screen/Home/HomeScreen/HomeBinding.dart';
-import 'package:flt_expense/Screen/Home/HomeScreen/HomeScreen.dart';
 import 'package:flt_expense/Utils/colors.dart';
 import 'package:flt_expense/Utils/images.dart';
 import 'package:flt_expense/Utils/strings.dart';
@@ -67,10 +65,7 @@ class LoginScreen extends GetView<LoginController> {
                                 },
                                 child: Icon(Icons.arrow_back)),
                             5.widthBox,
-                            txtforgotPasswordTitle.text.bold
-                                .fontFamily(FAMILY_BOLD)
-                                .xl2
-                                .make(),
+                            txtforgotPasswordTitle.text.bold.fontFamily(FAMILY_BOLD).xl2.make(),
                           ],
                         )
                       : txtSignIn.text.bold.fontFamily(FAMILY_BOLD).xl3.make()),
@@ -85,16 +80,24 @@ class LoginScreen extends GetView<LoginController> {
                               5.heightBox,
                               TextFormField(
                                 controller: controller.emailController,
-                                decoration:
-                                    commonInputDecoration(Icons.perm_identity),
+                                textInputAction: TextInputAction.next,
+                                focusNode: controller.emailFocus,
+                                onEditingComplete: () => controller.passwordFocus.nextFocus(),
+                                decoration: commonInputDecoration(Icons.perm_identity),
                               ),
                               20.heightBox,
                               txtpassword.text.normal.medium.make(),
                               5.heightBox,
                               TextFormField(
                                 controller: controller.passController,
-                                decoration: commonInputDecoration(
-                                    Icons.lock_outline_rounded),
+                                focusNode: controller.passwordFocus,
+                                obscureText: true,
+                                textInputAction: TextInputAction.done,
+                                onEditingComplete: () => {
+                                  controller.submitLoginAPI(context),
+                                  controller.passwordFocus.unfocus(),
+                                },
+                                decoration: commonInputDecoration(Icons.lock_outline_rounded),
                               ),
                               20.heightBox,
                             ],
@@ -108,8 +111,7 @@ class LoginScreen extends GetView<LoginController> {
                             Row(
                               children: <Widget>[
                                 Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 2.0, right: 2.0),
+                                  padding: const EdgeInsets.only(left: 2.0, right: 2.0),
                                   child: Container(
                                     decoration: BoxDecoration(
                                         border: Border.all(
@@ -123,21 +125,16 @@ class LoginScreen extends GetView<LoginController> {
                                     height: 20,
                                     child: Theme(
                                       data: ThemeData(
-                                        unselectedWidgetColor:
-                                            Colors.transparent,
+                                        unselectedWidgetColor: Colors.transparent,
                                       ),
                                       child: Obx(() => Checkbox(
                                             activeColor: primaryColor,
                                             checkColor: white,
-                                            materialTapTargetSize:
-                                                MaterialTapTargetSize
-                                                    .shrinkWrap,
+                                            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                             shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(5),
+                                              borderRadius: BorderRadius.circular(5),
                                             ),
-                                            visualDensity:
-                                                VisualDensity.standard,
+                                            visualDensity: VisualDensity.standard,
                                             value: controller.checkBox.value,
                                             tristate: false,
                                             onChanged: (bool? isChecked) {
@@ -148,22 +145,14 @@ class LoginScreen extends GetView<LoginController> {
                                   ),
                                 ),
                                 5.widthBox,
-                                txtAutoSign.text
-                                    .color(primaryColor)
-                                    .wide
-                                    .medium
-                                    .make()
+                                txtAutoSign.text.color(primaryColor).wide.medium.make()
                               ],
                             ),
                             InkWell(
                                 onTap: () {
                                   controller.forgotPass(true);
                                 },
-                                child: txtforgotPassword.text
-                                    .color(primaryColor)
-                                    .wide
-                                    .medium
-                                    .make()),
+                                child: txtforgotPassword.text.color(primaryColor).wide.medium.make()),
                           ],
                         )),
                   Obx(() => controller.forgotPass.value
@@ -175,20 +164,25 @@ class LoginScreen extends GetView<LoginController> {
                             5.heightBox,
                             TextFormField(
                               controller: controller.emailController,
-                              decoration:
-                                  commonInputDecoration(Icons.perm_identity),
+                              textInputAction: TextInputAction.next,
+                              onEditingComplete: () => controller.emailFocus.nextFocus(),
+                              decoration: commonInputDecoration(Icons.perm_identity),
                             ),
                           ],
                         )
                       : Container()),
                   20.heightBox,
-
-                   Obx((){
-                     return controller.isLoading.value?Center(child: CircularProgressIndicator(color: buttonColor,)): CustomButton(txtSignIn, 0, 0, () {
-                       controller.submitLoginAPI(context);
-                       // Get.to(HomeScreen(), binding: HomeBinding());
-                     });
-                   }),
+                  Obx(() {
+                    return controller.isLoading.value
+                        ? Center(
+                            child: CircularProgressIndicator(
+                            color: buttonColor,
+                          ))
+                        : CustomButton(txtSignIn, 0, 0, () {
+                            controller.submitLoginAPI(context);
+                            // Get.to(HomeScreen(), binding: HomeBinding());
+                          });
+                  }),
                   /* Obx(() => controller.forgotPass.value
                       ? CustomButton(txtSubmit, 0, 0, () {})
                       : CustomButton(txtSignIn, 0, 0, () {
@@ -203,11 +197,7 @@ class LoginScreen extends GetView<LoginController> {
                           children: [
                             txtCantLogin.text.wide.medium.makeCentered(),
                             5.widthBox,
-                            txtHelp.text
-                                .color(primaryColor)
-                                .wide
-                                .medium
-                                .makeCentered(),
+                            txtHelp.text.color(primaryColor).wide.medium.makeCentered(),
                           ],
                         )),
                 ],

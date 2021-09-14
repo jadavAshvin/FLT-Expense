@@ -50,7 +50,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> with SingleTickerProvider
     });
   }
 
-  bool _isShowDial = false;
+  // bool _isShowDial = false;
 
   @override
   void dispose() {
@@ -61,90 +61,97 @@ class _HomeTabScreenState extends State<HomeTabScreen> with SingleTickerProvider
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: Container(
-      //   padding: EdgeInsets.only(top: 30),
-      //   child: new FloatingActionButton(
-      //     onPressed: () {},
-      //     tooltip: 'Add',
-      //     child: Icon(Icons.add),
-      //     backgroundColor: buttonColor,
-      //     elevation: 4.0,
-      //   ),
-      // ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(top: 35.0, left: 10),
-        child: Stack(
-          children: <Widget>[
-            Transform.translate(
-              offset: Offset.fromDirection(getRadiansFromDegree(330), degOneTranslationAnimation.value * 120),
-              child: Transform(
-                transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
-                alignment: Alignment.center,
-                child: InkWell(
-                  onTap: () {},
-                  child: CircularButton(
-                    label: "Add\n Mileage",
-                    width: 50,
-                    height: 50,
-                    icon: SVG.MILEAGE_ICON,
-                  ),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset.fromDirection(getRadiansFromDegree(270), degOneTranslationAnimation.value * 120),
-              child: Transform(
-                transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
-                alignment: Alignment.center,
-                child: InkWell(
-                  child: CircularButton(
-                    label: "Add\n Report",
-                    width: 50,
-                    height: 50,
-                    icon: SVG.REPORT_ICON,
-                  ),
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Get.to(AddExpenseScreen(), binding: AddExpenseBinding());
-              },
-              child: Transform.translate(
-                offset: Offset.fromDirection(getRadiansFromDegree(210), degOneTranslationAnimation.value * 120),
-                child: Transform(
-                  transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
-                  alignment: Alignment.center,
-                  child: CircularButton(
-                    label: "Add\n Expense",
-                    width: 50,
-                    height: 50,
-                    icon: SVG.EXPENSE_ICON,
-                  ),
-                ),
-              ),
-            ),
-            Transform(
-              transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value)),
-              alignment: Alignment.center,
-              child: FloatingActionButton(
-                backgroundColor: buttonColor,
-                child: Icon(
-                  Icons.add,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  if (animationController.isCompleted) {
-                    animationController.reverse();
-                  } else {
-                    animationController.forward();
-                  }
-                },
-              ),
-            ),
-          ],
+      floatingActionButton: Container(
+        padding: EdgeInsets.only(top: 30),
+        child: new FloatingActionButton(
+          onPressed: () {
+            Get.to(AddExpenseScreen(), binding: AddExpenseBinding());
+          },
+          tooltip: 'Add',
+          child: Icon(Icons.add),
+          backgroundColor: buttonColor,
+          elevation: 4.0,
         ),
       ),
+      // floatingActionButton: Padding(
+      //   padding: const EdgeInsets.only(top: 35.0, left: 10),
+      //   child: Stack(
+      //     children: <Widget>[
+      //       Transform.translate(
+      //         offset: Offset.fromDirection(getRadiansFromDegree(330), degOneTranslationAnimation.value * 120),
+      //         child: Transform(
+      //           transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
+      //           alignment: Alignment.center,
+      //           child: InkWell(
+      //             onTap: () {
+      //               Get.to(AddExpenseScreen(), binding: AddExpenseBinding());
+      //             },
+      //             child: CircularButton(
+      //               label: "Add\n Mileage",
+      //               width: 50,
+      //               height: 50,
+      //               icon: SVG.MILEAGE_ICON,
+      //             ),
+      //           ),
+      //         ),
+      //       ),
+      //       Transform.translate(
+      //         offset: Offset.fromDirection(getRadiansFromDegree(270), degOneTranslationAnimation.value * 120),
+      //         child: Transform(
+      //           transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
+      //           alignment: Alignment.center,
+      //           child: InkWell(
+      //             onTap: () {
+      //               Get.to(AddExpenseScreen(), binding: AddExpenseBinding());
+      //             },
+      //             child: CircularButton(
+      //               label: "Add\n Report",
+      //               width: 50,
+      //               height: 50,
+      //               icon: SVG.REPORT_ICON,
+      //             ),
+      //           ),
+      //         ),
+      //       ),
+      //       InkWell(
+      //         onTap: () {
+      //           Get.to(AddExpenseScreen(), binding: AddExpenseBinding());
+      //         },
+      //         child: Transform.translate(
+      //           offset: Offset.fromDirection(getRadiansFromDegree(210), degOneTranslationAnimation.value * 120),
+      //           child: Transform(
+      //             transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value))..scale(degOneTranslationAnimation.value),
+      //             alignment: Alignment.center,
+      //             child: CircularButton(
+      //               label: "Add\n Expense",
+      //               width: 50,
+      //               height: 50,
+      //               icon: SVG.EXPENSE_ICON,
+      //             ),
+      //           ),
+      //         ),
+      //       ),
+      //       Transform(
+      //         transform: Matrix4.rotationZ(getRadiansFromDegree(rotationAnimation.value)),
+      //         alignment: Alignment.center,
+      //         child: FloatingActionButton(
+      //           backgroundColor: buttonColor,
+      //           child: Icon(
+      //             Icons.add,
+      //             color: Colors.white,
+      //           ),
+      //           onPressed: () {
+      //             if (animationController.isCompleted) {
+      //               animationController.reverse();
+      //             } else {
+      //               animationController.forward();
+      //             }
+      //           },
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
       // floatingActionButton: SpeedDialMenuButton(
       //   //if needed to close the menu after clicking sub-FAB
       //   isShowSpeedDial: _isShowDial,

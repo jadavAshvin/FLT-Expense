@@ -1,5 +1,5 @@
+import 'package:flt_expense/Model/ExpenseModule/expenseTypeListModel.dart';
 import 'package:flt_expense/Screen/Expense/AddExpense/AddExpenseController.dart';
-import 'package:flt_expense/Screen/Expense/AddExpense/ProjectAllocationDailog.dart';
 import 'package:flt_expense/Utils/CommonAppBar/commonAppbar.dart';
 import 'package:flt_expense/Utils/colors.dart';
 import 'package:flt_expense/Utils/images.dart';
@@ -8,6 +8,7 @@ import 'package:flt_expense/Widget/CommonTextField.dart';
 import 'package:flt_expense/Widget/CustomButton.dart';
 import 'package:flt_expense/Widget/commonDropDown.dart';
 import 'package:flt_expense/Widget/pickers.dart';
+import 'package:flt_expense/Widget/progressInicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,7 +35,7 @@ class AddExpenseScreen extends GetView<AddExpenseController> {
               5.heightBox,
 
               CommanDropDown(
-                child: DropdownButton<String>(
+                child: DropdownButton<ExpenseTypeListModel>(
                   isExpanded: true,
                   elevation: 0,
                   iconSize: 27.0,
@@ -45,12 +46,12 @@ class AddExpenseScreen extends GetView<AddExpenseController> {
                     color: primaryColor,
                   ),
                   // style: commanTextFieldStyle,
-                  items: controller.expType
+                  items: controller.expenseTypeList
                       .map(
-                        (String e) => new DropdownMenuItem<String>(
+                        (ExpenseTypeListModel e) => new DropdownMenuItem<ExpenseTypeListModel>(
                           value: e,
                           child: Text(
-                            e.toString(),
+                            e.name.toString(),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                             style: commanTextFieldStyle,
@@ -66,10 +67,11 @@ class AddExpenseScreen extends GetView<AddExpenseController> {
                     ),
                   ),
                   onChanged: (value) {
-                    controller.selectedExpense.value = value!;
+                    controller.selectedExpenseType.value = value!;
                   },
                 ),
               ),
+
               15.heightBox,
               "Date".text.normal.medium.make(),
               5.heightBox,
@@ -161,18 +163,66 @@ class AddExpenseScreen extends GetView<AddExpenseController> {
               15.heightBox,
               txtSplitWith.text.normal.medium.make(),
               5.heightBox,
-              // CustomButtonDisabled(txtProjectAllocation, 0, 0),
-              CustomButtonBorder(
-                child: txtProjectAllocation.text.color(primaryColor).lg.bold.make(),
-                left: 0,
-                right: 0,
-                onTap: () {
-                  Get.dialog(
-                    ProjectAllocationDailog(),
-                    useSafeArea: true,
-                  );
-                },
+              Obx(
+                () => controller.projectLoading.value
+                    ? progressIndicator()
+                    : controller.projectList.isEmpty
+                        ? Container(
+                            height: 150,
+                            child: Center(child: Text("No Project Available")),
+                          )
+                        : Wrap(
+                            alignment: WrapAlignment.start,
+                            crossAxisAlignment: WrapCrossAlignment.start,
+                            children: List.generate(
+                              controller.projectList.length,
+                              (index) {
+                                var e = controller.projectList;
+                                return IntrinsicWidth(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        InkWell(
+                                          onTap: () {
+                                            e[index].checked ? controller.tickUnClick(e[index]) : controller.tickClick(e[index]);
+                                            Get.forceAppUpdate();
+                                            print("${controller.projectId}");
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                            child: Icon(
+                                              e[index].checked ? Icons.check_box_outlined : Icons.check_box_outline_blank,
+                                              color: primaryColor,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(e[index].name),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
               ),
+              // CustomButtonDisabled(txtProjectAllocation, 0, 0),
+              // CustomButtonBorder(
+              //   child: txtProjectAllocation.text.color(primaryColor).lg.bold.make(),
+              //   left: 0,
+              //   right: 0,
+              //   onTap: () {
+              //     Get.dialog(
+              //       ProjectAllocationDailog(),
+              //       useSafeArea: true,
+              //     );
+              //   },
+              // ),
               15.heightBox,
               CustomButtonBorder(
                 child: Row(

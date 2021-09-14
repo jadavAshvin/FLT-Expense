@@ -9,20 +9,20 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  circular_menu: ^1.2.2
+  cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  circular_menu: ^1.2.2
-
-  cupertino_icons: ^1.0.2
+  flutter_arc_speed_dial: ^2.0.0
   flutter_svg: ^0.22.0
+  flutter_typeahead: ^3.2.0
+  fluttertoast: ^8.0.8
   get: ^4.1.4
   velocity_x: ^3.2.0
-  flutter_arc_speed_dial: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
   shared_preferences: ^2.0.6
-
 
 flutter:
 

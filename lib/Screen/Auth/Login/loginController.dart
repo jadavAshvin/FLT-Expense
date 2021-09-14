@@ -1,8 +1,10 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flt_expense/Apis/AuthApis.dart';
+import 'package:flt_expense/Model/loginResponse.dart';
+import 'package:flt_expense/Screen/Home/HomeScreen/HomeScreen.dart';
 import 'package:flt_expense/Utils/app_constants.dart';
+import 'package:flt_expense/Utils/keys.dart';
 import 'package:flt_expense/Utils/mySnackbar.dart';
 import 'package:flt_expense/Utils/strings.dart';
 
@@ -12,7 +14,8 @@ import 'package:get/get.dart';
 
 class LoginController extends GetxController {
   var processLoading = false.obs;
-  FocusNode focus = FocusNode();
+  FocusNode emailFocus = FocusNode();
+  FocusNode passwordFocus = FocusNode();
   var isLoading = false.obs;
   var checkBox = false.obs;
   var forgotPass = false.obs;
@@ -32,16 +35,18 @@ class LoginController extends GetxController {
       isLoading.value = true;
       await isConnected().then((value) {
         if (value) {
-          return AuthApis.loginApi(getLoginParameters()).then((value) {
+          return AuthApis.loginApi(getLoginParameters()).then((value) async {
             if (value != null) {
               isLoading.value = false;
-              var jsonData = value.body;
-              if (value.statusCode == 200) {
-                mySnackBar(jsonData['message']);
-                setData(jsonData);
-              } else {
-                mySnackBar(jsonData['message']);
-              }
+
+              mySnackBar(value.message);
+              await setPrefValue(Keys.AUTH_TOKEN, value.apiToken);
+              await setPrefValue(Keys.USERID, value.data.id.toString());
+              await setPrefValue(Keys.USERNAME, value.data.name);
+              await setPrefValue(Keys.EMAIL, value.data.email);
+              await setPrefValue(Keys.MOBILE, value.data.phone);
+              await setPrefValue(Keys.PROFILE_IMAGE, value.data.profileImage);
+              Get.offAll(HomeScreen());
             }
           });
         }
@@ -65,14 +70,5 @@ class LoginController extends GetxController {
       return false;
     }*/
     return true;
-  }
-
-  void setData(jsonData) {
-    setPrefValue(TOKEN, jsonData["api_token"]);
-    setPrefValue(ID, jsonData["data"]["id"].toString());
-    setPrefValue(NAME, jsonData["data"]["name"]!=null? jsonData["data"]["name"]:"");
-    setPrefValue(EMAIL, jsonData["data"]["email"]!=null?jsonData["data"]["email"]:"");
-    setPrefValue(PHONE, jsonData["data"]["phone"]!=null?jsonData["data"]["phone"]:"");
-    setPrefValue(PROFILE_IMAGE, jsonData["data"]["profile_image"]!=null?jsonData["data"]["profile_image"]:"");
   }
 }

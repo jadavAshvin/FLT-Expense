@@ -1,8 +1,9 @@
 import 'package:flt_expense/Screen/Auth/FingerPrint/fingerPrintScreen.dart';
-import 'package:flt_expense/Screen/Auth/Login/LoginScreen.dart';
-import 'package:flt_expense/Screen/Auth/Login/loginBinding.dart';
+import 'package:flt_expense/Screen/Home/HomeScreen/HomeScreen.dart';
+import 'package:flt_expense/Utils/app_constants.dart';
 import 'package:flt_expense/Utils/colors.dart';
 import 'package:flt_expense/Utils/images.dart';
+import 'package:flt_expense/Utils/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -20,7 +21,12 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
       // Get.off(() => LoginScreen(), binding: LoginBinding());
-      Get.off(() => FingerPrintScreen());
+      print("Token from splash ${getPrefValue(Keys.AUTH_TOKEN)}");
+      if (getPrefValue(Keys.AUTH_TOKEN) != "") {
+        Get.offAll(() => HomeScreen());
+      } else {
+        Get.off(() => FingerPrintScreen());
+      }
     });
   }
 

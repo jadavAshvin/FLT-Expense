@@ -56,43 +56,43 @@ class ProjectAllocationDailog extends GetView<AddExpenseController> {
                   15.heightBox,
                   txtSplitWith.text.medium.fontFamily(FAMILY_MEDIUM).medium.make(),
                   5.heightBox,
-                  CommanDropDown(
-                    child: DropdownButton<String>(
-                      isExpanded: true,
-                      elevation: 0,
-                      iconSize: 27.0,
-                      iconEnabledColor: black,
-                      underline: SizedBox(),
-                      icon: Icon(
-                        Icons.keyboard_arrow_down,
-                        color: primaryColor,
-                      ),
-                      // style: commanTextFieldStyle,
-                      items: controller.projectList
-                          .map(
-                            (String e) => new DropdownMenuItem<String>(
-                              value: e,
-                              child: Text(
-                                e.toString(),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                style: commanTextFieldStyle,
-                              ),
-                            ),
-                          )
-                          .toList(),
-                      // value: controller.selectedExpense.value,
-                      hint: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                        child: Text(
-                          txtProject,
-                        ),
-                      ),
-                      onChanged: (value) {
-                        controller.selectedExpense.value = value!;
-                      },
-                    ),
-                  ),
+                  // CommanDropDown(
+                  //   child: DropdownButton<String>(
+                  //     isExpanded: true,
+                  //     elevation: 0,
+                  //     iconSize: 27.0,
+                  //     iconEnabledColor: black,
+                  //     underline: SizedBox(),
+                  //     icon: Icon(
+                  //       Icons.keyboard_arrow_down,
+                  //       color: primaryColor,
+                  //     ),
+                  //     // style: commanTextFieldStyle,
+                  //     items: controller.projectList
+                  //         .map(
+                  //           (String e) => new DropdownMenuItem<String>(
+                  //             value: e,
+                  //             child: Text(
+                  //               e.toString(),
+                  //               overflow: TextOverflow.ellipsis,
+                  //               maxLines: 2,
+                  //               style: commanTextFieldStyle,
+                  //             ),
+                  //           ),
+                  //         )
+                  //         .toList(),
+                  //     // value: controller.selectedExpense.value,
+                  //     hint: Padding(
+                  //       padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  //       child: Text(
+                  //         txtProject,
+                  //       ),
+                  //     ),
+                  //     onChanged: (value) {
+                  //       controller.selectedExpense.value = value!;
+                  //     },
+                  //   ),
+                  // ),
                   20.heightBox,
                   Container(
                     transform: Matrix4.translationValues(-10, 0, 0),

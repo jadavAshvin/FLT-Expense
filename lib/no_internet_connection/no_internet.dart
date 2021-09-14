@@ -97,7 +97,7 @@ Future<bool> isConnected() async {
     }
   } on SocketException catch (_) {
     print('not connected');
-    mySnackbar(title: 'Not Connected', description: 'Please check your internet Connection');
+    mediumToastMessage(title: 'Not Connected', description: 'Please check your internet Connection');
     return false;
   }
 }
